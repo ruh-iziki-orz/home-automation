@@ -34,6 +34,10 @@ module.exports ={
                 res.send("No user found")
             }
     },
+    viewDevicesRegisteredToUserController: async function(req, res, next){
+
+        
+    }
 };
 
 
