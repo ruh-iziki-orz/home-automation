@@ -9,6 +9,7 @@ router.post('/register',validator_device,controller_device.create_device);
 
 router.get('/view',validator_device,controller_device.view_device);
 
+router.get('/getDevices',getAllDevicesRegisteredToUserValidator,  );
 
 module.exports=router;
 
