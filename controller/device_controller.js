@@ -25,7 +25,7 @@ module.exports ={
     },
     view_device: async function(req, res,next){
 
-            let device = await device_services.find_device(req.body.mac_id)
+            let device = await device_services.find_device(req.query.mac_id)
             if(device)
             {
                 res.send(device)
