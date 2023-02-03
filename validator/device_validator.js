@@ -1,6 +1,19 @@
 
 
-function validator(req,res,next){
-    next()
+function registerValidator(req,res,next){
+    
+    next();
+
 }
-module.exports = validator
+
+function viewValidator(req, res , next){
+
+    next();
+}
+
+
+
+module.exports = {
+    register, 
+
+}
