@@ -1,5 +1,6 @@
 
-const User = require('../models/users_module')
+const user_services = require('../services/user_services')
+
 module.exports ={
     create_user: async function(req, res,next){
     
@@ -11,7 +12,7 @@ module.exports ={
             image_url:req.body.image_url
         }
 
-            let user = await User.findOne({id:req.body.id})
+            let user = await user_services.find_user(req.body.id)
             if(user)
             {
                 console.log("already present")
@@ -19,7 +20,7 @@ module.exports ={
             }
             else
             {
-                user = await User.create(newUser)
+                user = await user_services.create_user(newUser)
                 console.log("created new")
                 res.send(user)
             }
@@ -29,7 +30,7 @@ module.exports ={
         const newUser = {
             id:req.body.id,
         }
-            let user = await User.findOne({id:req.body.id})
+            let user = await user_services.find_user(req.body.id)
             if(user)
             {
                 res.send(user)
