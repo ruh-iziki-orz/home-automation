@@ -1,19 +1,5 @@
-
-
-function registerValidator(req,res,next){
-    
-    next();
-
+function validator(req,res,next){
+    console.log("asdasd ")
+    next()
 }
-
-function viewValidator(req, res , next){
-
-    next();
-}
-
-
-
-module.exports = {
-    register, 
-
-}
+module.exports = validator

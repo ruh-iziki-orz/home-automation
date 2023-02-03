@@ -9,7 +9,6 @@ module.exports ={
             name:req.body.name,
             user_id:req.body.user_id
         }
-
             let device = await device_services.find_device(req.body.mac_id)
             if(device)
             {
@@ -24,7 +23,7 @@ module.exports ={
             }
     },
     view_device: async function(req, res,next){
-
+            
             let device = await device_services.find_device(req.query.mac_id)
             if(device)
             {

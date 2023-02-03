@@ -21,7 +21,7 @@ connectDB()
 
 
 // routes
-app.use('/', require('./routes/user_route'))
+app.use('/', require('./routes/router_index'))
 
 
 
