@@ -20,18 +20,6 @@ module.exports ={
                 res.send(device)
             }
     },
-    view_device: async function(req, res,next){
-            
-            let device = await device_services.find_device(req.query.user_id)
-            if(device)
-            {
-                res.send(device)
-            }
-            else
-            {
-                res.send("No user found")
-            }
-    },
     update_device: async function(req, res,next){
         const newDevice = {
             mac_id:req.body.mac_id,
@@ -49,8 +37,15 @@ module.exports ={
             }
     },
     viewDevicesRegisteredToUserController: async function(req, res, next){
-
-        
+        let device = await device_services.find_device(req.query.user_id)
+            if(device)
+            {
+                res.send(device.data)
+            }
+            else
+            {
+                res.send("No user found")
+            }
     }
 };
 

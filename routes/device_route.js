@@ -7,11 +7,10 @@ const device_controller_error_handle = require('../middlewares/device_controller
 
 router.post('/register',validator_device,device_controller_error_handle(controller_device.create_device));
 
-router.get('/view',validator_device,device_controller_error_handle(controller_device.view_device));
+router.get('/view_connected_devices',validator_device,device_controller_error_handle(controller_device.viewDevicesRegisteredToUserController));
 
 router.post('/update_devices',validator_device,device_controller_error_handle(controller_device.update_device));
 
-// router.get('/getDevices',getAllDevicesRegisteredToUserValidator,  );
 
 module.exports=router;
 
