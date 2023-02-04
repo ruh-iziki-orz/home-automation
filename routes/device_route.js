@@ -9,7 +9,9 @@ router.post('/register',validator_device,device_controller_error_handle(controll
 
 router.get('/view',validator_device,device_controller_error_handle(controller_device.view_device));
 
-router.get('/getDevices',getAllDevicesRegisteredToUserValidator,  );
+router.post('/update_devices',validator_device,device_controller_error_handle(controller_device.update_device));
+
+// router.get('/getDevices',getAllDevicesRegisteredToUserValidator,  );
 
 module.exports=router;
 
