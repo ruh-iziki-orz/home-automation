@@ -16,6 +16,8 @@
     "express-session": "^1.17.3",
     "mongoose": "^6.9.0",
     "morgan": "^1.10.0",
+    "mqtt": "^4.3.7",
+    "node-cron": "^3.0.2",
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0"
   }
