@@ -46,6 +46,10 @@ module.exports ={
             {
                 res.send("No user found")
             }
+    },
+    scheduleTaskController: async function (req, res, next){
+        
+            
     }
 };
 
