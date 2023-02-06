@@ -14,6 +14,7 @@ const server = http.createServer(app);
 
 app.use(bodyParser.json());
 
+process.env.TZ = "Asia/Calcutta";
 
 // load config for mongo db connection
 dotenv.config({path: './config/config.env'})

@@ -52,10 +52,10 @@ module.exports ={
 
     scheduleTaskController: async function (req, res, next){
         
-        const sModel= new SchedularModel({secound:req.body.secound, hour
-        :req.body.hour, minute:req.body.minute,days:req.body.days, month:req.body.month, year :req.body.year });
+        const sModel= new SchedularModel({second:req.body.second, hour
+        :req.body.hour, minute:req.body.minute, hour:req.body.hour,days:req.body.days, month:req.body.month, week :req.body.week });
         var commond = sModel.cronFuncitonCommondGenerator();
-        console.log(commond);
+        console.log()
 
         let message= schedular_services.scheduleService(commond);
 
