@@ -1,6 +1,8 @@
 
-const device_services = require('../services/device_services')
-
+const device_services = require('../services/device_services');
+const schedular_services=require('../services/CronSchedularService');
+const SchedularModel=require('../models/SchedularModel');
+const { model } = require('mongoose');
 module.exports ={
     create_device: async function(req, res,next){
         const newDevice = {
@@ -47,7 +49,18 @@ module.exports ={
                 res.send("No user found")
             }
     },
+
     scheduleTaskController: async function (req, res, next){
+        
+        const sModel= new SchedularModel({secound:req.body.secound, hour
+        :req.body.hour, minute:req.body.minute, hour:req.body.hour,days:req.body.days, month:req.body.month, year :req.body.year });
+        var commond = sModel.cronFuncitonCommondGenerator();
+        console.log()
+
+        let message= schedular_services.scheduleService(commond);
+
+        res.send(message);
+        
         
             
     }

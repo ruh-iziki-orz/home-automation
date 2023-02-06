@@ -1,6 +1,4 @@
-const { body, validationResult } = require('express-validator');
-const { check } = require('express-validator/check');
-
+const { check, validationResult } = require('express-validator');
 // function validator(req,res,next){
 //     console.log("asdasd ")
 //     next()
@@ -17,7 +15,6 @@ const { check } = require('express-validator/check');
 //     getAllDevicesRegisteredToUserValidator
 
 // }
-const { check, validationResult } = require('express-validator');
 
 const generateValidators = () => [
     // check('first_name')...,

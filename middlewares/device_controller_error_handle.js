@@ -27,7 +27,7 @@ const schedule_controller_error_handler=(controller)=>{
 
 }
 
-modules.exports = [device_controller_error_handle,
+module.exports = {device_controller_error_handle,
     schedule_controller_error_handler
     
-];
+};
