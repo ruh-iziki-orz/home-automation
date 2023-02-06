@@ -13,18 +13,18 @@ class SchedularModel{
      cronFuncitonCommondGenerator(){
         var commond ="";
 
-        if(secound==-1){
-            commond =commond.concat("* "); 
+        if(this.secound==-1){
+            commond =commond.concat('* '); 
 
         }else{
             this.secound.sort();
-            var sec="";
+            var sec='';
             for(var i =0;i<this.secound.length;i++){
                 sec= sec.concat(this.secound[i]);
                 sec=sec.concat(",");
             }
 
-            sec = sec.substring(0, string.length-1);
+            sec = sec.substring(0, sec.length-1);
 
             commond= commond.concat(sec);
             commond= commond.concat(" ");
@@ -46,7 +46,7 @@ class SchedularModel{
                 sec=sec.concat(",");
             }
 
-            sec = sec.substring(0, string.length-1);
+            sec = sec.substring(0, sec.length-1);
 
             commond= commond.concat(sec);
             commond=commond.concat(" ");

@@ -15,4 +15,22 @@ const client = mqtt.connect(connectUrl, {
   username: 'emqx',
   password: 'public',
   reconnectPeriod: 1000,
-})
+});
+
+
+const connectMQTT = async() =>{
+  try{
+    client.on('connect', () => {
+      console.log('Connected to MQTTT');
+      
+    });
+    
+  }
+  catch(err)
+  {
+      console.log(err);
+      process.exit(1);
+  }
+}
+
+module.exports=connectMQTT;
