@@ -12,7 +12,7 @@ var cron = require('node-cron');
 
 module.exports={
 
-    scheduleService:async function (req, res, next){
+    scheduleService:async function (){
         
         
     }
