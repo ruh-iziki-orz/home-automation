@@ -1,5 +1,7 @@
 var cron = require('node-cron');
 const SchedularModel=require('../models/SchedularModel');
+const mqttClient =require('../config/MqttServer');
+
 
 
 
@@ -20,13 +22,14 @@ module.exports={
             console.log("running a task every 1 minutes");
         });
 
+      
+        const connected= await mqttClient.checkConnection();
+
         return {
             success:true,
-            message:"successfully added"
+            message:"successfully added",
+            connected:  connected
         };
-          
-
-
         
     }
 }

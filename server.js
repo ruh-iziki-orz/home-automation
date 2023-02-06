@@ -22,7 +22,9 @@ dotenv.config({path: './config/config.env'})
 
 // connect db
 connectDB()
-connectMQTT();
+connectMQTT.clientConnection();
+
+
 
 // routes
 app.use('/', require('./routes/router_index'))

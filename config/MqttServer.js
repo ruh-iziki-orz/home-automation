@@ -1,3 +1,4 @@
+const { check } = require('express-validator')
 const mqtt = require('mqtt')
 
 
@@ -21,8 +22,9 @@ const client = mqtt.connect(connectUrl, {
 const connectMQTT = async() =>{
   try{
     client.on('connect', () => {
-      console.log('Connected to MQTTT');
       
+      console.log('Connected to MQTTT');
+
     });
     
   }
@@ -32,5 +34,14 @@ const connectMQTT = async() =>{
       process.exit(1);
   }
 }
+const checkIfConnected=async()=>{
+  
+  const isConnected= client.connected;
+  
+  return isConnected;
 
-module.exports=connectMQTT;
+}
+
+
+module.exports.clientConnection = connectMQTT;
+module.exports.checkConnection = checkIfConnected;
