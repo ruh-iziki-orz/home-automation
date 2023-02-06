@@ -2,11 +2,16 @@
 const mongoose = require('mongoose')
 
 const DeviceSchema = new mongoose.Schema({
-    user_id:{
+    mac_id:{
         type:String,
         required:true
     },
-    data:{ type : Array , "default" : [] },
+    connected_user:{ type : Array ,
+         "default" : [] 
+    },
+    cron_scheduled:{ type : Array , 
+        "default" : [] 
+    },
     created_at:{
         type:Date,
         default:Date.now

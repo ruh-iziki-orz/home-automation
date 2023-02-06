@@ -1,13 +1,16 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-    id:{
+    user_id:{
         type:String,
         required:true
     },
     name:{
         type:String,
         required:true
+    },
+    compartment_data:{ type : Array ,
+        "default" : [] 
     },
     number:{
         type:String,

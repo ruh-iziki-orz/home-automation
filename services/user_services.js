@@ -5,9 +5,24 @@ module.exports ={
         let user = await User.create(newUser)
         return user
     },
-    find_user: async function(id){
-        let user = await User.findOne({id:id})
+    find_user: async function(user_id){
+        let user = await User.findOne({id:user_id})
         return user
+    },
+    add_compartment: async function(newDevice,user_id){
+        let device = await User.updateOne(
+            { "user_id": String(user_id) }, 
+            { $push: { compartment_data: newDevice } }
+        )
+        return device
+    },
+    add_device: async function(newDevice,id,compartment_id){
+        console.log(compartment_id)
+        let device = await User.updateOne(
+            { "user_id":id,"compartment_data.user_id":compartment_id}, 
+            { $push: { "compartment_data.$.connected_device_data": newDevice } }
+        )
+        return device
     }
 }
 
