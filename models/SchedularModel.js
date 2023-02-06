@@ -12,14 +12,11 @@ class SchedularModel{
      cronFuncitonCommondGenerator(){
         var commond ="";
 
-        console.log(this.minute)
         if(this.second==-1){
             commond =commond.concat("* "); 
 
         }else{
             var sec="";
-            console.log("asdasd ")
-            console.log(this.second)
             
             for(var i =0;i<this.second.length;i++){
                 sec= sec.concat(this.second[i]);
@@ -27,22 +24,19 @@ class SchedularModel{
                 sec=sec.concat(",");
             }
 
-            console.log("asdd ")
             commond= commond.concat(sec);
             commond= commond.concat(" ");
 
         }
 
-        console.log(this.minute)
-
+        
         if(this.minute==-1){
             commond=commond.concat("* ");
 
 
         }else{
 
-            console.log(" asdasd ")
-
+            
             var sec="";
             for(var i =0;i<this.minute.length;i++){
                 sec= sec.concat(this.minute[i]);
@@ -133,8 +127,7 @@ class SchedularModel{
 
 
 
-        console.log(commond)
-
+        
         return commond;
 
      }

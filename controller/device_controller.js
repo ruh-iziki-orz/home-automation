@@ -55,10 +55,11 @@ module.exports ={
         const sModel= new SchedularModel({second:req.body.second, hour
         :req.body.hour, minute:req.body.minute, hour:req.body.hour,days:req.body.days, month:req.body.month, week :req.body.week });
         var commond = sModel.cronFuncitonCommondGenerator();
-        console.log()
+        
 
-        let message= schedular_services.scheduleService(commond);
-
+        let message=await schedular_services.scheduleService(commond);
+        
+        
         res.send(message);
         
         
