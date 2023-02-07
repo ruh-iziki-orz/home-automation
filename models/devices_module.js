@@ -2,6 +2,10 @@
 const mongoose = require('mongoose')
 
 const DeviceSchema = new mongoose.Schema({
+    client_id:{
+        type:String,
+        required:true
+    },
     mac_id:{
         type:String,
         required:true

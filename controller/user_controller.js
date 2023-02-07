@@ -5,12 +5,11 @@ module.exports ={
     create_user: async function(req, res,next){
     
         const newUser = {
-            user_id:req.body.user_id,
+            user_id:"to be updated",
             name:req.body.name,
             number:req.body.number,
             email:req.body.email,
             image_url:req.body.image_url,
-            compartment_data:req.body.compartment_data
         }
 
             let user = await user_services.find_user(req.body.user_id)
@@ -62,7 +61,7 @@ module.exports ={
 
     add_device: async function(req, res,next){
         const newDevice = {
-            mac_id:req.body.mac_id,
+            client_id:req.body.client_id,
             mac_name:req.body.mac_name
         }
             let user = await user_services.find_user(req.body.user_id)

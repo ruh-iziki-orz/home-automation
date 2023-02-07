@@ -3,7 +3,11 @@ const User = require('../models/users_module')
 module.exports ={
     create_user: async function(newUser){
         let user = await User.create(newUser)
-        return user
+        let device_updated = await Device.updateOne({_id:user._id},{$set: {user_id:user._id}})
+        return {
+            success:true,
+            user_id:user._id
+        }
     },
     find_user: async function(user_id){
         let user = await User.findOne({id:user_id})
