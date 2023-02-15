@@ -74,7 +74,6 @@ module.exports ={
             id_generated_all_compartment = id_generated_all_compartment.concat('$ALL_COMPARTMENT')
 
             let device = await device_services.find_device(req.body.client_id)
-
             if(device == null)
             {
                 let device_registration = await device_services.create_device(req.body.client_id,req.body.user_id)

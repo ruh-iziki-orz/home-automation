@@ -16,14 +16,14 @@ module.exports ={
     add_compartment: async function(newCompartment,user_id){
         let device = await User.updateOne(
             { "user_id": String(user_id) }, 
-            { $push: { compartment_data: newCompartment } }
+            { $addToSet: { compartment_data: newCompartment } }
         )
         return device
     },
     add_device: async function(newDevice,user_id,compartment_id){
         let device = await User.updateOne(
             { "user_id":user_id,"compartment_data.compartment_id":compartment_id}, 
-            { $push: { "compartment_data.$.connected_device_data": newDevice } }
+            { $addToSet: { "compartment_data.$.connected_device_data": newDevice } }
         )
         return device
     }
