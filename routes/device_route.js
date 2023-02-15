@@ -5,7 +5,7 @@ const validator_device = require('../validator/device_validator')
 const controller_device = require('../controller/device_controller')
 const {device_controller_error_handle, schedule_controller_error_handler} = require('../middlewares/device_controller_error_handle')
 
-router.post('/register_device',validator_device.add,device_controller_error_handle(controller_device.create_device));
+router.post('/generate_device_id',validator_device.add,device_controller_error_handle(controller_device.generate_device_id));
 
 router.post('/add_more_users_to_device',validator_device.add,device_controller_error_handle(controller_device.update_device));
 

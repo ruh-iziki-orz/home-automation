@@ -4,13 +4,12 @@ const schedular_services=require('../services/CronSchedularService');
 const SchedularModel=require('../models/SchedularModel');
 const { model } = require('mongoose');
 module.exports ={
-    create_device: async function(req,res,next){
-        const newDevice = {
-            client_id:"to be updated",
-            mac_id:req.body.mac_id
-        }
-        device = await device_services.create_device(newDevice)
-        res.send(device)
+    generate_device_id: async function(req,res,next){
+        device = await device_services.generate_device_id()
+        res.send({
+            success:true,
+            client_id:device
+        })
     },
     update_device: async function(req, res, next){
         let device = await device_services.find_device(req.body.client_id)

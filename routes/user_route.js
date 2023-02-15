@@ -5,7 +5,7 @@ const controller_user = require('../controller/user_controller')
 const user_error_handle = require('../middlewares/user_error_handle')
 
 
-router.post('/create',validator_user,user_error_handle(controller_user.create_user));
+router.post('/create_user',validator_user,user_error_handle(controller_user.create_user));
 
 router.get('/view_user',validator_user,user_error_handle(controller_user.view_user));
 

@@ -1,9 +1,8 @@
 
 const user_services = require('../services/user_services')
-
+const device_services = require('../services/device_services')
 module.exports ={
     create_user: async function(req, res,next){
-    
         const newUser = {
             user_id:"to be updated",
             name:req.body.name,
@@ -11,19 +10,9 @@ module.exports ={
             email:req.body.email,
             image_url:req.body.image_url,
         }
-
-            let user = await user_services.find_user(req.body.user_id)
-            if(user)
-            {
-                console.log("already present")
-                res.send(user)
-            }
-            else
-            {
-                user = await user_services.create_user(newUser)
-                console.log("created new")
-                res.send(user)
-            }
+        user = await user_services.create_user(newUser)
+        console.log("created new")
+        res.send(user)
     },
     view_user: async function(req, res,next){
             let user = await user_services.find_user(req.body.user_id)
@@ -51,7 +40,10 @@ module.exports ={
             if(user)
             {
                 let user_updated = await user_services.add_compartment(newDevice,req.body.user_id)
-                res.send(user_updated)
+                res.send({
+                    success:true,
+                    compartment_id:id_generated
+                })
             }
             else
             {
@@ -62,8 +54,16 @@ module.exports ={
     add_device: async function(req, res,next){
         const newDevice = {
             client_id:req.body.client_id,
-            mac_name:req.body.mac_name
+            mac_name:req.body.mac_name,
         }
+
+            let device = await device_services.find_device(req.body.client_id)
+
+            if(device == null)
+            {
+                let device_registration = await device_services.create_device(req.body.client_id,req.boyd.mac_id)
+            }
+            
             let user = await user_services.find_user(req.body.user_id)
             if(user)
             {
