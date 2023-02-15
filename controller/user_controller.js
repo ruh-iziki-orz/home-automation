@@ -11,6 +11,19 @@ module.exports ={
             image_url:req.body.image_url,
         }
         user = await user_services.create_user(newUser)
+        
+        let id_generated_all_compartment = String(user.user_id)
+        
+        id_generated_all_compartment = id_generated_all_compartment.concat('$ALL_COMPARTMENT')
+        
+        
+        const newCompartment = {
+            compartment_id:id_generated_all_compartment,
+            compartment_name:'ALL_COMPARTMENT',
+            connected_device_data:[]
+        }        
+
+        let user_updated = await user_services.add_compartment(newCompartment,user.user_id)
         console.log("created new")
         res.send(user)
     },
@@ -57,17 +70,25 @@ module.exports ={
             mac_name:req.body.mac_name,
         }
 
+            let id_generated_all_compartment = String(req.body.user_id)
+            id_generated_all_compartment = id_generated_all_compartment.concat('$ALL_COMPARTMENT')
+
             let device = await device_services.find_device(req.body.client_id)
 
             if(device == null)
             {
-                let device_registration = await device_services.create_device(req.body.client_id,req.boyd.mac_id)
+                let device_registration = await device_services.create_device(req.body.client_id,req.body.user_id)
+            }
+            else
+            {
+                let device_update = await device_services.update_device(req.body.client_id,req.body.user_id)
             }
             
             let user = await user_services.find_user(req.body.user_id)
             if(user)
             {
                 let user_updated = await user_services.add_device(newDevice,req.body.user_id,req.body.compartment_id)
+                let user_updated_all_compartment = await user_services.add_device(newDevice,req.body.user_id,id_generated_all_compartment)
                 res.send(user_updated)
             }
             else
