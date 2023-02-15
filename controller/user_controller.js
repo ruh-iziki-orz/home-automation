@@ -28,14 +28,14 @@ module.exports ={
         res.send(user)
     },
     view_user: async function(req, res,next){
-            let user = await user_services.find_user(req.body.user_id)
+            let user = await user_services.find_user(req.query.user_id)
             if(user)
             {
-                res.send(user)
+                res.status(200).send({success:true , message: user});
             }
             else
             {
-                res.send("No user found")
+                res.status (401).send({success: false , message:"No user found "});
             }
     },
     add_compartment: async function(req, res,next){
@@ -67,7 +67,8 @@ module.exports ={
     add_device: async function(req, res,next){
         const newDevice = {
             client_id:req.body.client_id,
-            mac_name:req.body.mac_name,
+            device_name:req.body.mac_name,
+            mac_id:req.body.mac_id
         }
 
             let id_generated_all_compartment = String(req.body.user_id)
@@ -89,6 +90,7 @@ module.exports ={
                 let user_updated = await user_services.add_device(newDevice,req.body.user_id,req.body.compartment_id)
                 let user_updated_all_compartment = await user_services.add_device(newDevice,req.body.user_id,id_generated_all_compartment)
                 res.send(user_updated)
+
             }
             else
             {

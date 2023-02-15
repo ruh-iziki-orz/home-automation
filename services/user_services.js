@@ -22,7 +22,8 @@ module.exports ={
     },
     add_device: async function(newDevice,user_id,compartment_id){
         let device = await User.updateOne(
-            { "user_id":user_id,"compartment_data.compartment_id":compartment_id}, 
+            { "user_id":user_id,"compartment_data.compartment_id":compartment_id},
+             
             { $addToSet: { "compartment_data.$.connected_device_data": newDevice } }
         )
         return device
