@@ -68,7 +68,9 @@ module.exports ={
         const newDevice = {
             client_id:req.body.client_id,
             device_name:req.body.mac_name,
-            mac_id:req.body.mac_id
+            mac_id:req.body.mac_id,
+            publish_topic:req.body.publish_topic,
+            subscribe_topic:req.body.subscribe_topic
         }
 
             let id_generated_all_compartment = String(req.body.user_id)
@@ -77,11 +79,13 @@ module.exports ={
             let device = await device_services.find_device(req.body.client_id)
             if(device == null)
             {
-                let device_registration = await device_services.create_device(req.body.client_id,req.body.user_id)
+                let device_registration = await device_services.create_device(req.body)
             }
             else
             {
+
                 let device_update = await device_services.update_device(req.body.client_id,req.body.user_id)
+                
             }
             
             let user = await user_services.find_user(req.body.user_id)

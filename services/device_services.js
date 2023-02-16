@@ -16,9 +16,9 @@ module.exports ={
         }
         return id_generated
     },
-    create_device:async function(client_id,mac_id)
+    create_device:async function(body)
     {
-        let device = Device.create({client_id:client_id,mac_id:mac_id})
+        let device = Device.create({client_id:body.client_id,mac_id:body.mac_id, connected_user:[body.user_id], subscribe_topic:body.subscribe_topic, publish_topic: body.publish_topic})
         return device;
     },
     find_device: async function(id){

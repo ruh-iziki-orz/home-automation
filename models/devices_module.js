@@ -19,6 +19,14 @@ const DeviceSchema = new mongoose.Schema({
     created_at:{
         type:Date,
         default:Date.now
+    },
+    publish_topic:{
+        type:String,
+        required:true
+    }, 
+    subscribe_topic:{
+        type:String, 
+        required:true
     }
 })
 
